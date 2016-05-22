@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import ReSwift
+
+public var debugLog = "verbose" // can be set to "minimal"
+
+var store = Store<State>(reducer: AppReducer(), state: nil,middleware: [loggingMiddleware])
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
