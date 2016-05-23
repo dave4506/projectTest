@@ -14,22 +14,21 @@ func currentLookReducer(state: Look?, action: Action) -> Look {
     switch action {
         case let lookAction as SetLook:
             return lookAction.look
-        /*
         case let switchAction as SwitchProductInLook:
             if case let .Fetched(look) = state {
-                var products = look["products"] as! Array<Dictionary<String,AnyObject>>
+                var newLook = look;
+                var products = newLook["products"] as! Array<Dictionary<String,AnyObject>>
                 loop:
-                for (i,product) in enumerate(products) {
+                for (i,product) in products.enumerate() {
                     if(product["id"] as! String == switchAction.replaceProductId){
-                        products[i]=switchAction.product
-                        look["products"] = products
+                        products[i] = switchAction.product
+                        newLook["products"] = products
                         break loop
                     }
                 }
-                return .Fetched(look)
+                return .Fetched(newLook)
             }
-        */
-        default:
-            return state
+        default:break;
     }
+    return state;
 }

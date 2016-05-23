@@ -11,5 +11,10 @@ import ReSwift
 
 func currentSimilarProductsReducer(state: SimilarProduct?, action: Action) -> SimilarProduct {
     var state = state ?? .Empty
-    return state
+    switch action {
+    case let similarAction as SetSimilarProducts:
+        return similarAction.products
+    default:break;
+    }
+    return state;
 }
